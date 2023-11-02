@@ -11,7 +11,9 @@ streamlit.text('Hard-Boiled Free-Range Egg')
 streamlit.header("Build your own Smoothie")
 
 fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-
-streamlit.dataframe(fruits_list)
+fruits_list = fruits_list.set_index('Fruit')
 
 streamlit.multiselect("Pick some fruits:" ,list(fruits_list.index))
+
+
+streamlit.dataframe(fruits_list)
