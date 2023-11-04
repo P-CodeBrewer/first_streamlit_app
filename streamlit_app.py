@@ -1,5 +1,6 @@
 import streamlit
 import pandas as pd
+import requests as re
 
 streamlit.title("My Parents New Healthy Diner")
 streamlit.header("Breakfast Menu")
@@ -19,4 +20,5 @@ fruits_to_show = fruits_list.loc[fruits_selected]
 
 streamlit.dataframe(fruits_to_show)
 
-
+fruitsyvice_api_response = re.get('https://fruityvice.com/api/fruit/watermelon')
+streamlit.text(fruityvice_api)
