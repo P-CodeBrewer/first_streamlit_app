@@ -33,9 +33,13 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruityv
 fruityvice_df = pd.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_df)
 
+streamlit.header("The Fruit load list conatins:")
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select * from pc_rivery_db.public.fruit_load_list;")
 my_data_row = my_cur.fetchall()
 streamlit.text("Fruit Load List:")
 streamlit.dataframe(my_data_row)
+
+list = streamlit.text_input("What fruit would you like to add?")
+streamlit.write("Thanks for adding", list)
